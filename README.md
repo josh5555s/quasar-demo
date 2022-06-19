@@ -1,4 +1,4 @@
-# Quasar App (quasar-project)
+# Quasar Demo (quasar-project)
 
 A Quasar Project
 

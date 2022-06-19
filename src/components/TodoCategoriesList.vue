@@ -1,7 +1,9 @@
 <template>
-  <q-list v-for="item in todos" v-bind:key="item.category">
-    <TodoCategory :item="item" @selectCategory="selectCategory" />
-  </q-list>
+  <div>
+    <q-list v-for="item in todos" v-bind:key="item.category">
+      <TodoCategory :item="item" @selectCategory="selectCategory" />
+    </q-list>
+  </div>
 </template>
 
 <script>

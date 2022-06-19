@@ -4,17 +4,24 @@
       <q-toolbar>
         <q-input
           dense
-          placeholder="Search"
-          boarderless
+          label-slot
+          oarderless
           class="full-width"
           v-model="search"
         >
+          <template #label>
+            {{ searchPlaceholder }}
+          </template>
           <template #append>
             <q-icon name="mdi-magnify"></q-icon>
           </template>
         </q-input>
       </q-toolbar>
-      <TodosList :todos="todos" @toggleCheckbox="toggleCheckbox"></TodosList>
+      <TodosList
+        :todos="todos"
+        :search="search"
+        @toggleCheckbox="toggleCheckbox"
+      ></TodosList>
     </q-card>
     <div class="col-xs-3">
       <q-toolbar class="bg-primary">
@@ -47,6 +54,16 @@ export default defineComponent({
     return {
       search: "",
     };
+  },
+  computed: {
+    selectedCategory() {
+      return this.todos.filter((category) => {
+        return category.categorySelected;
+      })[0];
+    },
+    searchPlaceholder() {
+      return `Search ${this.selectedCategory.category}`;
+    },
   },
   methods: {
     toggleCheckbox(item) {

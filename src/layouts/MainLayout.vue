@@ -11,9 +11,9 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title> Quasar Demo </q-toolbar-title>
 
-        <q-btn flat round icon="mdi-logout"></q-btn>
+        <q-btn @click="toLoginPage" flat round icon="mdi-logout"></q-btn>
       </q-toolbar>
     </q-header>
 
@@ -21,7 +21,7 @@
       <q-toolbar class="bg-primary"></q-toolbar>
       <q-item class="bg-gray-3">
         <q-item-section> Lists </q-item-section>
-        <q-section side>
+        <!-- <q-section side>
           <CreateTodoListButton
             icon="mdi-plus"
             color="purple"
@@ -29,7 +29,7 @@
             round
             size="sm"
           />
-        </q-section>
+        </q-section> -->
       </q-item>
       <TodoCategoriesList :todos="todos" @selectCategory="selectCategory" />
     </q-drawer>
@@ -42,13 +42,13 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import CreateTodoListButton from "components/CreateTodoListButton.vue";
+// import CreateTodoListButton from "components/CreateTodoListButton.vue";
 import TodoCategoriesList from "components/TodoCategoriesList.vue";
 
 export default defineComponent({
   name: "MainLayout",
   components: {
-    CreateTodoListButton,
+    // CreateTodoListButton,
     TodoCategoriesList,
   },
   data() {
@@ -71,6 +71,14 @@ export default defineComponent({
               text: "Go to the beach",
               checked: false,
             },
+            {
+              text: "Check in on California",
+              checked: false,
+            },
+            {
+              text: "Roadtrip anywhere",
+              checked: false,
+            },
           ],
         },
         {
@@ -83,7 +91,38 @@ export default defineComponent({
               checked: false,
             },
             {
-              text: "Buy a cargo rack for the car",
+              text: "Find some interesting tea",
+              checked: false,
+            },
+            {
+              text: "Get some flip flops",
+              checked: false,
+            },
+            {
+              text: "Get new tires put on the car",
+              checked: false,
+            },
+          ],
+        },
+        {
+          category: "Food",
+          categorySelected: false,
+          icon: "mdi-noodles",
+          items: [
+            {
+              text: "Eat some Lo Mein noodles",
+              checked: false,
+            },
+            {
+              text: "Drink a green tea",
+              checked: false,
+            },
+            {
+              text: "Order a pizza",
+              checked: false,
+            },
+            {
+              text: "Go grocery shopping",
               checked: false,
             },
           ],
@@ -107,6 +146,9 @@ export default defineComponent({
         return possibleItem.text === toggledItem.text;
       })[0];
       itemToUpdate.checked = !itemToUpdate.checked;
+    },
+    toLoginPage() {
+      this.$router.push({ path: "/auth/login" });
     },
   },
 

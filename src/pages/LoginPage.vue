@@ -10,15 +10,26 @@
               label="email"
               placeholder="email@example.com"
               class="q-mb-sm"
+              v-model="usernameInput"
             ></q-input>
             <q-input
               filled
               label="password"
               type="password"
               class="q-mb-sm"
+              v-model="passwordInput"
             ></q-input>
-            <q-checkbox label="remember me" :model-value="true"></q-checkbox>
-            <q-btn label="login" class="full-width" color="primary"></q-btn>
+            <q-checkbox
+              @click="toggleRememberMe"
+              label="remember me"
+              v-model="rememberMe"
+            ></q-checkbox>
+            <q-btn
+              @click="toAppPage"
+              label="login"
+              class="full-width"
+              color="primary"
+            ></q-btn>
           </q-form>
         </q-card-section>
       </q-card>
@@ -28,6 +39,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      usernameInput: "",
+      passwordInput: "",
+      rememberMe: false,
+    };
+  },
+  methods: {
+    toggleRememberMe() {
+      this.rememberMe ? !this.rememberMe : this.rememberMe;
+    },
+    toAppPage() {
+      this.$router.push({ path: "/" });
+    },
+  },
   // name: 'PageName',
 };
 </script>
