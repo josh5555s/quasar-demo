@@ -1,6 +1,6 @@
 <template>
-  <a>
-    <q-item clickable @click="selectCategory">
+  <a @click="selectCategory">
+    <q-item clickable >
       <q-item-section side>
         <q-icon :name="item.icon"></q-icon>
       </q-item-section>

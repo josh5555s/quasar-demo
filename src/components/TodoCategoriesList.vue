@@ -15,16 +15,14 @@ export default {
   components: {
     TodoCategory,
   },
-  methods: {
-    selectCategory(item) {
-      this.$emit("selectCategory", item);
-    },
-  },
-  created() {
+  setup(context) {
+
     console.log(this.todos);
-  },
-  setup() {
-    return {};
+
+    function selectCategory(item) {
+      context.emit("selectCategory", item);
+    }
+    return {selectCategory,};
   },
 };
 </script>
