@@ -15,14 +15,10 @@ export default {
   components: {
     TodoCategory,
   },
-  setup(context) {
-
-    console.log(this.todos);
-
-    function selectCategory(item) {
-      context.emit("selectCategory", item);
+  methods: {
+    selectCategory(item) {
+      this.$emit("selectCategory", item);
     }
-    return {selectCategory,};
-  },
+  }
 };
 </script>
